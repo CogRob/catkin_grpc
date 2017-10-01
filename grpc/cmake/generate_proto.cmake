@@ -35,26 +35,25 @@ find_library(
     LIBPROTOBUF libprotobuf.a PATHS ${GRPC_LIB_DIR}/protobuf NO_DEFAULT_PATH)
 message(STATUS "Found libprotobuf: ${LIBPROTOBUF}")
 
-find_library(LIBARES libares.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBBORINGSSL libboringssl.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGPR libgpr.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPC libgrpc.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPCPP libgrpc++.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPC_CRONET libgrpc_cronet.a
+find_library(LIBARES ares PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBBORINGSSL boringssl PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGPR gpr PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC grpc PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP grpc++ PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC_CRONET grpc_cronet PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP_CRONET grpc++_cronet
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPCPP_CRONET libgrpc++_cronet.a
+find_library(LIBGRPCPP_ERROR_DETAILS grpc++_error_details
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPCPP_ERROR_DETAILS libgrpc++_error_details.a
+find_library(LIBGRPC_PLUGIN_SUPPORT grpc_plugin_support
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPC_PLUGIN_SUPPORT libgrpc_plugin_support.a
+find_library(LIBGRPCPP_REFLECTION grpc++_reflection
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPCPP_REFLECTION libgrpc++_reflection.a
+find_library(LIBGRPC_UNSECURE grpc_unsecure
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPC_UNSECURE libgrpc_unsecure.a
+find_library(LIBGRPCPP_UNSECURE grpc++_unsecure
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBGRPCPP_UNSECURE libgrpc++_unsecure.a
-             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBZ libz.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBZ z PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 
 set(ALL_LIBGRPC ${LIBARES} ${LIBBORINGSSL} ${LIBGPR} ${LIBGRPC} ${LIBGRPCPP}
     ${LIBGRPC_CRONET} ${LIBGRPCPP_CRONET} ${LIBGRPCPP_ERROR_DETAILS}

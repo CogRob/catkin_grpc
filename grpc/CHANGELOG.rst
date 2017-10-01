@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2017-09-30)
+------------------
 * Allows CMake to choose dynamic/static linking on grpc libraries
 * Some fix to grpc package. (`#11 <https://github.com/CogRob/catkin_grpc/issues/11>`_)
   * Use all embedded third_party software, use grpc 1.6.x, use all static linking to avoid conflicts, move include dir

@@ -5,22 +5,9 @@ project(grpc)
 find_package(catkin REQUIRED)
 
 set(GRPC_URL https://github.com/grpc/grpc.git)
-set(GRPC_TAG "v1.4.x")
+set(GRPC_TAG "v1.6.x")
 
 catkin_package(
-  LIBRARIES
-    ares
-    boringssl
-    gpr
-    grpc
-    grpc++
-    grpc_cronet
-    grpc++_cronet
-    grpc++_error_details
-    grpc_plugin_support
-    grpc++_reflection
-    grpc_unsecure
-    grpc++_unsecure
   CFG_EXTRAS generate_proto.cmake
 )
 
@@ -31,12 +18,12 @@ ExternalProject_Add(
   GIT_TAG ${GRPC_TAG}
   CONFIGURE_COMMAND ""
   BUILD_IN_SOURCE 1
-  BUILD_COMMAND $(MAKE)
+  BUILD_COMMAND $(MAKE) CONFIG=opt REQUIRE_CUSTOM_LIBRARIES_opt=1
   INSTALL_COMMAND ""
 )
 
 set(GRPC_INCLUDE_DESTINATION
-    ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION})
+    ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)
 set(GRPC_LIB_DESTINATION
     ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION})
 set(GRPC_BIN_DESTINATION
@@ -49,7 +36,7 @@ install(
     ${GRPC_INCLUDE_DESTINATION}/grpc++
   USE_SOURCE_PERMISSIONS
   DESTINATION
-    ${CMAKE_INSTALL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION})
+    ${CMAKE_INSTALL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)
 install(
   DIRECTORY ${GRPC_LIB_DESTINATION}/
   USE_SOURCE_PERMISSIONS

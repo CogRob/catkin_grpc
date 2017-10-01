@@ -47,6 +47,13 @@ ExternalProject_Add(
   INSTALL_COMMAND "")
 
 ExternalProject_Add(
+  get_boringssl_with_bazel PREFIX grpc
+  GIT_REPOSITORY https://boringssl.googlesource.com/boringssl
+  GIT_TAG 886e7d75368e3f4fab3f4d0d3584e4abfc557755
+  SOURCE_DIR third_party/boringssl-with-bazel
+  CONFIGURE_COMMAND "" BUILD_COMMAND "" INSTALL_COMMAND "")
+
+ExternalProject_Add(
   get_benchmark PREFIX grpc URL ${BENCHMARK_URL}
   SOURCE_DIR third_party/benchmark CONFIGURE_COMMAND "" BUILD_COMMAND ""
   INSTALL_COMMAND "")
@@ -83,8 +90,8 @@ ExternalProject_Add(
   INSTALL_COMMAND ""
 )
 
-add_dependencies(build_grpc get_c_ares get_boringssl get_benchmark get_gflags
-                 get_googletest get_protobuf get_zlib)
+add_dependencies(build_grpc get_c_ares get_boringssl get_boringssl_with_bazel
+                 get_benchmark get_gflags get_googletest get_protobuf get_zlib)
 
 set(GRPC_INCLUDE_DESTINATION
     ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)

@@ -32,10 +32,39 @@ message(STATUS "Found grpc_python_plugin at: ${GRPC_PYTHON_PLUGIN}")
 
 set(GRPC_LIB_DIR ${grpc_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
 find_library(
-    LIBPROTOBUF protobuf PATHS ${GRPC_LIB_DIR}/protobuf NO_DEFAULT_PATH)
+    LIBPROTOBUF libprotobuf.a PATHS ${GRPC_LIB_DIR}/protobuf NO_DEFAULT_PATH)
 message(STATUS "Found libprotobuf: ${LIBPROTOBUF}")
 
-set(PROTOBUF_INCLUDE_DIR ${grpc_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION})
+find_library(LIBARES libares.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBBORINGSSL libboringssl.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGPR libgpr.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC libgrpc.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP libgrpc++.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC_CRONET libgrpc_cronet.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP_CRONET libgrpc++_cronet.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP_ERROR_DETAILS libgrpc++_error_details.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC_PLUGIN_SUPPORT libgrpc_plugin_support.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP_REFLECTION libgrpc++_reflection.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPC_UNSECURE libgrpc_unsecure.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBGRPCPP_UNSECURE libgrpc++_unsecure.a
+             PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+find_library(LIBZ libz.a PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+
+set(ALL_LIBGRPC ${LIBARES} ${LIBBORINGSSL} ${LIBGPR} ${LIBGRPC} ${LIBGRPCPP}
+    ${LIBGRPC_CRONET} ${LIBGRPCPP_CRONET} ${LIBGRPCPP_ERROR_DETAILS}
+    ${LIBGRPC_PLUGIN_SUPPORT} ${LIBGRPCPP_REFLECTION} ${LIBGRPC_UNSECURE}
+    ${LIBGRPCPP_UNSECURE} ${LIBZ})
+message(STATUS "Found grpc libraries: ${ALL_LIBGRPC}")
+
+set(GRPC_INCLUDE_DIR
+    ${grpc_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)
+include_directories(BEFORE ${GRPC_INCLUDE_DIR})
 
 set(GENERATE_PROTO_STAMP_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(GENERATE_PROTO_CC_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR})
@@ -129,7 +158,7 @@ function(generate_proto PROTO_TARGET_NAME)
         ARGS --cpp_out=${GENERATE_PROTO_CC_OUTPUT_DIR}
              --python_out=${GENERATE_PROTO_PY_OUTPUT_DIR}
              -I${SRC_RELATIVE_BASE_DIR}
-             -I${PROTOBUF_INCLUDE_DIR}
+             -I${GRPC_INCLUDE_DIR}
              ${PROTOC_EXTRA_ARGS}
              ${ABS_FILE_PATH}
       COMMAND ${CMAKE_COMMAND}
@@ -175,10 +204,13 @@ function(generate_proto PROTO_TARGET_NAME)
     VERBATIM
   )
 
-  include_directories(BEFORE ${PROTOBUF_INCLUDE_DIR})
   include_directories(${GENERATE_PROTO_CC_OUTPUT_DIR})
   add_library(${PROTO_TARGET_NAME} ${PROTOGEN_CC_GENERATED_LIST})
   add_dependencies(${PROTO_TARGET_NAME} ${ALL_STAMP_TARGETS})
   target_link_libraries(${PROTO_TARGET_NAME} ${LIBPROTOBUF})
+
+  if(WITH_GRPC)
+    target_link_libraries(${PROTO_TARGET_NAME} ${ALL_LIBGRPC} pthread)
+  endif()
 
 endfunction()

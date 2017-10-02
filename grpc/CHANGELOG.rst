@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2017-10-02)
+------------------
 * Adds INCLUDE_DIRS and expose grpc/src/proto (`#14 <https://github.com/CogRob/catkin_grpc/issues/14>`_)
   * Allows generate_proto to have specify include_dirs
   * Allow grpc's build-in protos to be used by clients

@@ -134,6 +134,20 @@ add_custom_command(
       ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/bins/opt/
       ${GRPC_BIN_DESTINATION}/
   COMMAND
+    ${CMAKE_COMMAND} -E make_directory ${GRPC_INCLUDE_DESTINATION}/src/proto
+  COMMAND
+    ${RSYNC}
+      --prune-empty-dirs --archive
+      --include="*/" --include="*.proto" --exclude="*"
+      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/src/proto/
+      ${GRPC_INCLUDE_DESTINATION}/src/proto/
+  COMMAND
+    ${RSYNC}
+      --prune-empty-dirs --archive
+      --include="*/" --include="*.h" --exclude="*"
+      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/gens/src/proto/
+      ${GRPC_INCLUDE_DESTINATION}/src/proto/
+  COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
       --include="*/" --include="*.h" --exclude="*"

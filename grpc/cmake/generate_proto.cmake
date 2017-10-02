@@ -73,10 +73,11 @@ set(GENERATE_PROTO_PY_OUTPUT_DIR
     ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
 
 function(generate_proto PROTO_TARGET_NAME)
-  cmake_parse_arguments(protogen "GRPC" "SRC_BASE" "" ${ARGN})
+  cmake_parse_arguments(protogen "GRPC" "SRC_BASE" "INCLUDE_DIRS;FILES" ${ARGN})
   set(WITH_GRPC ${protogen_GRPC})
   set(SRC_BASE ${protogen_SRC_BASE})
-  set(PROTO_FILES "${protogen_UNPARSED_ARGUMENTS}")
+  set(INCLUDE_DIRS ${protogen_INCLUDE_DIRS})
+  set(PROTO_FILES ${protogen_FILES} ${protogen_UNPARSED_ARGUMENTS})
 
   if(NOT PROTO_FILES)
     message(SEND_ERROR "Error: generate_proto() called without any proto files")
@@ -151,6 +152,12 @@ function(generate_proto PROTO_TARGET_NAME)
          ${CURRENT_GENERATED_CC_LIST} ${CURRENT_GENERATED_PY_LIST}
          ${CURRENT_GENERATED_OTHER_LIST})
 
+    set(INCLUDE_DIRS_ARGS "")
+    foreach(INCLUDE_DIR ${INCLUDE_DIRS})
+      get_filename_component(ABS_INCLUDE_DIR ${INCLUDE_DIR} ABSOLUTE)
+      list(APPEND INCLUDE_DIRS_ARGS "-I${ABS_INCLUDE_DIR}")
+    endforeach(INCLUDE_DIR)
+
     add_custom_command(
       OUTPUT ${DEST_STAMP_FILE}
       COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
@@ -158,6 +165,7 @@ function(generate_proto PROTO_TARGET_NAME)
              --python_out=${GENERATE_PROTO_PY_OUTPUT_DIR}
              -I${SRC_RELATIVE_BASE_DIR}
              -I${GRPC_INCLUDE_DIR}
+             ${INCLUDE_DIRS_ARGS}
              ${PROTOC_EXTRA_ARGS}
              ${ABS_FILE_PATH}
       COMMAND ${CMAKE_COMMAND}

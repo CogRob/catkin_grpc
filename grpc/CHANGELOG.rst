@@ -2,6 +2,14 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Adds INCLUDE_DIRS and expose grpc/src/proto (`#14 <https://github.com/CogRob/catkin_grpc/issues/14>`_)
+  * Allows generate_proto to have specify include_dirs
+  * Allow grpc's build-in protos to be used by clients
+* Minor documentation fix. (`#13 <https://github.com/CogRob/catkin_grpc/issues/13>`_)
+* Contributors: Shengye Wang
+
 0.0.3 (2017-09-30)
 ------------------
 * Allows CMake to choose dynamic/static linking on grpc libraries

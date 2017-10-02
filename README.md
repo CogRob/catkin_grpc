@@ -65,6 +65,17 @@ In another example, if you use `SRC_BASE "proto"`, you will get
 or `import hello_pb2`. Please note all the package will see these generated
 files. Please use caution to avoid namespace pollution.
 
+
+### `INCLUDE_DIRS`
+`generate_proto` has a `INCLUDE_DIRS` keyword to allow searching proto in
+additional directories. `INCLUDE_DIRS` accepts multiple arguments, and to
+distinguish proto files to compile from include directory, a `FILES` keyword
+is necessary before the file list. Example:
+
+```
+generate_proto(hello_proto INCLUDE_DIRS dir1 dir2 FILES proto/hello.proto)`
+```
+
 ## Dependencies
 
 All the dependencies are documented in `package.xml` file. These are commonly

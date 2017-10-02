@@ -77,7 +77,7 @@ function(generate_proto PROTO_TARGET_NAME)
   set(WITH_GRPC ${protogen_GRPC})
   set(SRC_BASE ${protogen_SRC_BASE})
   set(INCLUDE_DIRS ${protogen_INCLUDE_DIRS})
-  set(PROTO_FILES "${protogen_FILES};${protogen_UNPARSED_ARGUMENTS}")
+  set(PROTO_FILES ${protogen_FILES} ${protogen_UNPARSED_ARGUMENTS})
 
   if(NOT PROTO_FILES)
     message(SEND_ERROR "Error: generate_proto() called without any proto files")

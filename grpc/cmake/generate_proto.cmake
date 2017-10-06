@@ -84,9 +84,18 @@ function(generate_proto PROTO_TARGET_NAME)
     return()
   endif()
 
+  unset(USE_SYMLINKED_SRC)
   if(NOT SRC_BASE)
-    get_filename_component(
-      SRC_RELATIVE_BASE_DIR ${PROJECT_SOURCE_DIR} DIRECTORY)
+    set(USE_SYMLINKED_SRC TRUE)
+    # Prepend all the file paths with the package name.
+    set(SRC_RELATIVE_BASE_DIR "${CMAKE_CURRENT_BINARY_DIR}/grpc_protoc_root")
+    file(MAKE_DIRECTORY ${SRC_RELATIVE_BASE_DIR})
+    if(NOT EXISTS ${SRC_RELATIVE_BASE_DIR}/${PROJECT_NAME})
+      execute_process(
+        COMMAND
+          ${CMAKE_COMMAND} -E create_symlink
+          ${PROJECT_SOURCE_DIR} ${SRC_RELATIVE_BASE_DIR}/${PROJECT_NAME})
+    endif()
   else()
     set(SRC_RELATIVE_BASE_DIR "${PROJECT_SOURCE_DIR}/${SRC_BASE}")
   endif()
@@ -100,9 +109,14 @@ function(generate_proto PROTO_TARGET_NAME)
   unset(PROTOGEN_GENERATED_LIST)
   unset(PROTOGEN_CC_GENERATED_LIST)
 
-  foreach(FIL ${PROTO_FILES})
-    get_filename_component(ABS_FILE_PATH ${FIL} ABSOLUTE)
-    get_filename_component(FILE_BASENAME ${FIL} NAME_WE)
+  foreach(PROTO_FILE ${PROTO_FILES})
+    if(USE_SYMLINKED_SRC)
+      set(ABS_FILE_PATH ${SRC_RELATIVE_BASE_DIR}/${PROJECT_NAME}/${PROTO_FILE})
+    else()
+      get_filename_component(ABS_FILE_PATH ${PROTO_FILE} ABSOLUTE)
+    endif()
+
+    get_filename_component(FILE_BASENAME ${PROTO_FILE} NAME_WE)
     # FILE_RELPATH_BASE is the relative file path to base.
     file(RELATIVE_PATH FILE_RELPATH_BASE
          ${SRC_RELATIVE_BASE_DIR} ${ABS_FILE_PATH})
@@ -171,7 +185,7 @@ function(generate_proto PROTO_TARGET_NAME)
       COMMAND ${CMAKE_COMMAND}
         ARGS -E touch ${DEST_STAMP_FILE}
       DEPENDS ${FILE_RELPATH_PROJECT_SRC}
-      COMMENT "Running protocol buffer compiler on \"${FIL}\"."
+      COMMENT "Running protocol buffer compiler on \"${PROTO_FILE}\"."
       VERBATIM
     )
 

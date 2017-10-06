@@ -40,14 +40,17 @@ directory as their base. However, you can specify your source base using
 `SRC_BASE`. Your source base will correspond to global `include` and
 `dist-packages` directory.
 
-The default source base is one-level above the package directory, therefore all
-the generated files will end up in a subdirectory with package name. That is the
-reason why `your_package` is necessary in `#include "your_package/hello.pb.h"`.
-If your source layout is `catkin_ws/src/your_package/proto/hello.proto`, by
-default the source base is `catkin_ws/src`, so `your_package/proto/hello.proto`
-will convert to `your_package/proto/hello{.pb.h, .pb.cc, _pb2.py}`, and end up
-with `catkin_ws/devel/include/your_package/proto/hello.pb{.h, .cc}` and
+The default source base is one-level above the package directory, assuming your
+package directory name is identical to package name. Therefore, the generated
+files will end up in a subdirectory with package name. That is the reason why
+`your_package` is necessary in `#include "your_package/hello.pb.h"`. If your
+source layout is `catkin_ws/src/your_package/proto/hello.proto`, by default the
+source base is `catkin_ws/src`, so `your_package/proto/hello.proto` will convert
+to `your_package/proto/hello{.pb.h, .pb.cc, _pb2.py}`, and end up with
+`catkin_ws/devel/include/your_package/proto/hello.pb{.h, .cc}` and
 `catkin_ws/devel/lib/python2.7/dist-packages/your_package/proto/hello_pb2.py`.
+Please note even if your package directory name is not the same as package name,
+you should use your **package name** in the include/import path.
 
 You can use `SRC_BASE` to modify such behavior. The argument of `SRC_BASE` is
 relative to **your package base directory**, `catkin_ws/src/your_package` in the

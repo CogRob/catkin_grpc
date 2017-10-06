@@ -2,6 +2,16 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fixes a problem in default SRC_BASE (`#18 <https://github.com/CogRob/catkin_grpc/issues/18>`_)
+  * Fix an issue when package directory is not the same as package name, protoc fails to generate files in the correct path
+  * Improve the copy src/proto command
+  * Revert "Improve the copy src/proto command"
+  This reverts commit adfca498b7b3b00fb4c350675d3b4dbcb154fe75.
+  * Fixes a problem that src in include is not installed
+* Contributors: Shengye Wang
+
 0.0.4 (2017-10-02)
 ------------------
 * Adds INCLUDE_DIRS and expose grpc/src/proto (`#14 <https://github.com/CogRob/catkin_grpc/issues/14>`_)

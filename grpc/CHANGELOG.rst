@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2017-10-06)
+------------------
 * Fixes a problem in default SRC_BASE (`#18 <https://github.com/CogRob/catkin_grpc/issues/18>`_)
   * Fix an issue when package directory is not the same as package name, protoc fails to generate files in the correct path
   * Improve the copy src/proto command

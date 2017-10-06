@@ -144,15 +144,9 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
-      --include="*/" --include="*.h" --exclude="*"
+      --include="*/" --include="*.h" --include="*.proto" --exclude="*"
       ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/gens/src/proto/
       ${GRPC_INCLUDE_DESTINATION}/src/proto/
-  COMMAND
-    ${RSYNC}
-      --prune-empty-dirs --archive
-      --include="*/" --include="*.h" --exclude="*"
-      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/include/
-      ${GRPC_INCLUDE_DESTINATION}/
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive

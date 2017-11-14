@@ -120,8 +120,6 @@ function(generate_proto PROTO_TARGET_NAME)
     # FILE_RELPATH_BASE is the relative file path to base.
     file(RELATIVE_PATH FILE_RELPATH_BASE
          ${SRC_RELATIVE_BASE_DIR} ${ABS_FILE_PATH})
-    file(RELATIVE_PATH FILE_RELPATH_PROJECT_SRC
-         ${PROJECT_SOURCE_DIR} ${ABS_FILE_PATH})
     get_filename_component(DIR_FILE ${FILE_RELPATH_BASE} DIRECTORY)
 
     # DEST_STAMP_FILE is stamp file to mark execution of protoc.
@@ -184,7 +182,7 @@ function(generate_proto PROTO_TARGET_NAME)
              ${ABS_FILE_PATH}
       COMMAND ${CMAKE_COMMAND}
         ARGS -E touch ${DEST_STAMP_FILE}
-      DEPENDS ${FILE_RELPATH_PROJECT_SRC}
+      DEPENDS ${ABS_FILE_PATH}
       COMMENT "Running protocol buffer compiler on \"${PROTO_FILE}\"."
       VERBATIM
     )

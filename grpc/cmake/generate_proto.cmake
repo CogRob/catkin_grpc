@@ -33,7 +33,10 @@ message(STATUS "Found grpc_python_plugin at: ${GRPC_PYTHON_PLUGIN}")
 set(GRPC_LIB_DIR ${grpc_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
 find_library(
     LIBPROTOBUF libprotobuf.a PATHS ${GRPC_LIB_DIR}/protobuf NO_DEFAULT_PATH)
-message(STATUS "Found libprotobuf: ${LIBPROTOBUF}")
+find_library(LIBZ z PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
+
+set(ALL_PROTOBUF_LIBS ${LIBPROTOBUF} ${LIBZ})
+message(STATUS "Found protobuf libraries: ${ALL_PROTOBUF_LIBS}")
 
 find_library(LIBARES ares PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 find_library(LIBBORINGSSL boringssl PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
@@ -53,13 +56,12 @@ find_library(LIBGRPC_UNSECURE grpc_unsecure
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 find_library(LIBGRPCPP_UNSECURE grpc++_unsecure
              PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
-find_library(LIBZ z PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 
-set(ALL_LIBGRPC ${LIBARES} ${LIBBORINGSSL} ${LIBGPR} ${LIBGRPC} ${LIBGRPCPP}
+set(ALL_GRPC_LIBS ${LIBARES} ${LIBBORINGSSL} ${LIBGPR} ${LIBGRPC} ${LIBGRPCPP}
     ${LIBGRPC_CRONET} ${LIBGRPCPP_CRONET} ${LIBGRPCPP_ERROR_DETAILS}
     ${LIBGRPC_PLUGIN_SUPPORT} ${LIBGRPCPP_REFLECTION} ${LIBGRPC_UNSECURE}
-    ${LIBGRPCPP_UNSECURE} ${LIBZ})
-message(STATUS "Found grpc libraries: ${ALL_LIBGRPC}")
+    ${LIBGRPCPP_UNSECURE})
+message(STATUS "Found grpc libraries: ${ALL_GRPC_LIBS}")
 
 set(GRPC_INCLUDE_DIR
     ${grpc_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)
@@ -226,10 +228,10 @@ function(generate_proto PROTO_TARGET_NAME)
   include_directories(${GENERATE_PROTO_CC_OUTPUT_DIR})
   add_library(${PROTO_TARGET_NAME} ${PROTOGEN_CC_GENERATED_LIST})
   add_dependencies(${PROTO_TARGET_NAME} ${ALL_STAMP_TARGETS})
-  target_link_libraries(${PROTO_TARGET_NAME} ${LIBPROTOBUF})
+  target_link_libraries(${PROTO_TARGET_NAME} ${ALL_PROTOBUF_LIBS})
 
   if(WITH_GRPC)
-    target_link_libraries(${PROTO_TARGET_NAME} ${ALL_LIBGRPC} pthread)
+    target_link_libraries(${PROTO_TARGET_NAME} ${ALL_GRPC_LIBS} pthread)
   endif()
 
 endfunction()

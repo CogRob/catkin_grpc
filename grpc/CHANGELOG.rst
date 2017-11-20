@@ -2,6 +2,13 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Depend on zlib (`#23 <https://github.com/CogRob/catkin_grpc/issues/23>`_) and link protobuf with zlib (`#22 <https://github.com/CogRob/catkin_grpc/issues/22>`_) (`#24 <https://github.com/CogRob/catkin_grpc/issues/24>`_)
+* Depend on absolute path of .proto file (`#21 <https://github.com/CogRob/catkin_grpc/issues/21>`_)
+  This should fix `#20 <https://github.com/CogRob/catkin_grpc/issues/20>`_. The original concern was for some reason cmake re-generate protos if .proto is not within src. Initial test shows this is not the case, but should do more tests.
+* Contributors: Shengye Wang
+
 0.0.5 (2017-10-06)
 ------------------
 * Fixes a problem in default SRC_BASE (`#18 <https://github.com/CogRob/catkin_grpc/issues/18>`_)

@@ -9,5 +9,6 @@
   <build_depend>libtool</build_depend>
   <build_depend>rsync</build_depend>
   <build_depend>git</build_depend>
+  <build_depend>zlib</build_depend>
   <buildtool_depend>catkin</buildtool_depend>
 </package>

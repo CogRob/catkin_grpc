@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.8 (2018-04-18)
+------------------
 * Install grpcpp headers which was missing.
 * Contributors: Shengye Wang
 

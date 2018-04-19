@@ -2,6 +2,11 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Install grpcpp headers which was missing.
+* Contributors: Shengye Wang
+
 0.0.7 (2018-04-18)
 ------------------
 * Update git tags to third party repos (`#27 <https://github.com/CogRob/catkin_grpc/issues/27>`_)

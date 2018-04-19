@@ -2,6 +2,11 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update git tags to third party repos (`#27 <https://github.com/CogRob/catkin_grpc/issues/27>`_)
+* Contributors: bikramak
+
 0.0.6 (2017-11-20)
 ------------------
 * Depend on zlib (`#23 <https://github.com/CogRob/catkin_grpc/issues/23>`_) and link protobuf with zlib (`#22 <https://github.com/CogRob/catkin_grpc/issues/22>`_) (`#24 <https://github.com/CogRob/catkin_grpc/issues/24>`_)

@@ -106,8 +106,9 @@ ExternalProject_Add(
   INSTALL_COMMAND ""
 )
 
-add_dependencies(build_grpc get_c_ares get_boringssl get_boringssl_with_bazel
-                 get_benchmark get_gflags get_googletest get_protobuf get_zlib get_abseil get_bloaty)
+add_dependencies(
+  build_grpc get_c_ares get_boringssl get_boringssl_with_bazel get_benchmark
+  get_gflags get_googletest get_protobuf get_zlib get_abseil get_bloaty)
 
 set(GRPC_INCLUDE_DESTINATION
     ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)
@@ -165,6 +166,7 @@ install(
     ${GRPC_INCLUDE_DESTINATION}/google
     ${GRPC_INCLUDE_DESTINATION}/grpc
     ${GRPC_INCLUDE_DESTINATION}/grpc++
+    ${GRPC_INCLUDE_DESTINATION}/grpcpp
     ${GRPC_INCLUDE_DESTINATION}/src
   USE_SOURCE_PERMISSIONS
   DESTINATION

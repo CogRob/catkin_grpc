@@ -16,6 +16,12 @@ rules in your `CMakeLists.txt` (see more below).
 * Use "`target_link_libraries`" to link proto target (`<proto_target>` above)
 to your library or executable.
 
+* If you will use your `<proto_target>` in another Catkin package, in the
+`catkin_package()` statement, include `CATKIN_DEPENDS grpc` and
+`LIBRARIES <proto_target> ${ALL_PROTOBUF_LIBS} ${ALL_GRPC_LIBS}` (you can skip
+`${ALL_GRPC_LIBS}` if you did not use `GRPC` in `generate_proto`).
+[Read more](https://github.com/CogRob/catkin_grpc/issues/29).
+
 ## `generate_proto` Features
 
 ### Basic Usage

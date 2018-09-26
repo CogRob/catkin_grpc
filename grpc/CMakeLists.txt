@@ -30,7 +30,7 @@ set(C_ARES_URL https://github.com/c-ares/c-ares/archive/${C_ARES_TAG}.tar.gz)
 set(GFLAGS_URL https://github.com/gflags/gflags/archive/${GFLAGS_TAG}.tar.gz)
 set(GOOGLETEST_URL https://github.com/google/googletest/archive/${GOOGLETEST_TAG}.tar.gz)
 set(LIBCXX_URL https://github.com/llvm-mirror/libcxx/archive/${LIBCXX_TAG}.tar.gz)
-set(LIBCXXABI_URL https://github.com/llvm-mirror/libcxxabi/archive/${LIBCXX_TAG}.tar.gz)
+set(LIBCXXABI_URL https://github.com/llvm-mirror/libcxxabi/archive/${LIBCXXABI_TAG}.tar.gz)
 set(PROTOBUF_URL https://github.com/protocolbuffers/protobuf/archive/${PROTOBUF_TAG}.tar.gz)
 set(ZLIB_URL https://github.com/madler/zlib/archive/${ZLIB_TAG}.tar.gz)
 

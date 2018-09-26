@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.10 (2018-09-26)
+-------------------
 * Follow upstream grpc 1.15.1 (`#33 <https://github.com/CogRob/catkin_grpc/issues/33>`_)
   * Sync grpc to upstream 1.15.1
   * Typo fix

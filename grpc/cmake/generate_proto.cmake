@@ -174,12 +174,14 @@ function(generate_proto PROTO_TARGET_NAME)
       list(APPEND INCLUDE_DIRS_ARGS "-I${ABS_INCLUDE_DIR}")
     endforeach(INCLUDE_DIR)
 
+    get_filename_component(ABS_SRC_RELATIVE_BASE_DIR ${SRC_RELATIVE_BASE_DIR} ABSOLUTE)
+
     add_custom_command(
       OUTPUT ${DEST_STAMP_FILE}
       COMMAND ${PROTOBUF_PROTOC_EXECUTABLE}
         ARGS --cpp_out=${GENERATE_PROTO_CC_OUTPUT_DIR}
              --python_out=${GENERATE_PROTO_PY_OUTPUT_DIR}
-             -I${SRC_RELATIVE_BASE_DIR}
+             -I${ABS_SRC_RELATIVE_BASE_DIR}
              -I${GRPC_INCLUDE_DIR}
              ${INCLUDE_DIRS_ARGS}
              ${PROTOC_EXTRA_ARGS}

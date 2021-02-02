@@ -33,8 +33,9 @@ message(STATUS "Found grpc_python_plugin at: ${GRPC_PYTHON_PLUGIN}")
 set(GRPC_LIB_DIR ${grpc_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
 find_library(
     LIBPROTOBUF libprotobuf.a PATHS ${GRPC_LIB_DIR}/protobuf NO_DEFAULT_PATH)
+find_library(LIBZ z PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 
-set(ALL_PROTOBUF_LIBS ${LIBPROTOBUF})
+set(ALL_PROTOBUF_LIBS ${LIBPROTOBUF} ${LIBZ})
 message(STATUS "Found protobuf libraries: ${ALL_PROTOBUF_LIBS}")
 
 find_library(LIBADDRESS_SORTING address_sorting PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)

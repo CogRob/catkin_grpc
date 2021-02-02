@@ -25,7 +25,7 @@ ExternalProject_Add(
   SOURCE_DIR grpc_build
   CONFIGURE_COMMAND ""
   BUILD_IN_SOURCE 1
-  BUILD_COMMAND $(MAKE) CONFIG=opt REQUIRE_CUSTOM_LIBRARIES_opt=1
+  BUILD_COMMAND $(MAKE) CONFIG=opt EMBED_ZLIB=true
   INSTALL_COMMAND ""
 )
 
@@ -75,7 +75,7 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
-      --include="*/" --include="*.h" --include="*.proto" --exclude="*"
+      --include="*/" --include="*.h" --include="*.inc" --include="*.proto" --exclude="*"
       ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/third_party/protobuf/src/
       ${GRPC_INCLUDE_DESTINATION}/
 )

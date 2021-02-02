@@ -75,7 +75,7 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
-      --include="*/" --include="*.h" --include="*.proto" --exclude="*"
+      --include="*/" --include="*.h" --include="*.inc" --include="*.proto" --exclude="*"
       ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/third_party/protobuf/src/
       ${GRPC_INCLUDE_DESTINATION}/
 )

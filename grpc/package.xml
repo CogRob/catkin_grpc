@@ -11,4 +11,5 @@
   <build_depend>git</build_depend>
   <build_depend>zlib</build_depend>
   <buildtool_depend>catkin</buildtool_depend>
+  <depend>rsync</depend>
 </package>

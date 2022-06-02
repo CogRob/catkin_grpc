@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.11 (2022-06-02)
+-------------------
 * Update package.xml
 * Fix build failure (`#45 <https://github.com/CogRob/catkin_grpc/issues/45>`_)
 * Update package.xml (`#44 <https://github.com/CogRob/catkin_grpc/issues/44>`_)

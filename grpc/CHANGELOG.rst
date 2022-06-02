@@ -2,6 +2,23 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update package.xml
+* Fix build failure (`#45 <https://github.com/CogRob/catkin_grpc/issues/45>`_)
+* Update package.xml (`#44 <https://github.com/CogRob/catkin_grpc/issues/44>`_)
+* Support finding libraries for grpc v1.34.1 (`#43 <https://github.com/CogRob/catkin_grpc/issues/43>`_)
+* Bump grpc version to v1.34.1 for supporting noetic (`#42 <https://github.com/CogRob/catkin_grpc/issues/42>`_)
+  * use git to fetch external project grpc
+  * bump grpc version to v1.34.1
+  Co-authored-by: Shengye Wang <BillWSY@users.noreply.github.com>
+* use git to fetch external project grpc (`#41 <https://github.com/CogRob/catkin_grpc/issues/41>`_)
+  * use git to fetch external project grpc
+  * Specify Cmake version for using GIT_REPOSITORY and GIT_CONFIG
+  Co-authored-by: Shengye Wang <BillWSY@users.noreply.github.com>
+* use absolute path for RELATIVE_BASE_DIR (`#37 <https://github.com/CogRob/catkin_grpc/issues/37>`_)
+* Contributors: JaeyoungLim, Shengye Wang, Tom Lankhorst, Yuki Furuta
+
 0.0.10 (2018-09-26)
 -------------------
 * Follow upstream grpc 1.15.1 (`#33 <https://github.com/CogRob/catkin_grpc/issues/33>`_)

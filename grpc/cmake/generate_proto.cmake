@@ -35,7 +35,7 @@ message(STATUS "Found grpc_python_plugin at: ${GRPC_PYTHON_PLUGIN}")
 
 set(GRPC_LIB_DIR ${grpc_PREFIX}/${CATKIN_GLOBAL_LIB_DESTINATION})
 find_library(
-  LIBPROTOBUF libprotobuf.a
+  LIBPROTOBUF protobuf
   PATHS
   ${GRPC_LIB_DIR}
   ${GRPC_LIB_DIR}/protobuf
@@ -50,8 +50,8 @@ find_library(LIBGRPC_ABSEIL grpc_abseil PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 if(LIBGRPC_ABSEIL)
   list(APPEND ALL_GRPC_LIBS "${LIBGRPC_ABSEIL}")
 else()
-  # If grpc is built using cmake, the ABSL libraries are splited into multiple libabsl_*.a
-  file(GLOB LIBABSL_FILES "${GRPC_LIB_DIR}/libabsl_*.a")
+  # If grpc is built using cmake, the ABSL libraries are splited into multiple libabsl_*.so
+  file(GLOB LIBABSL_FILES "${GRPC_LIB_DIR}/libabsl_*.so")
   foreach(LIBABSL_FILE IN LISTS LIBABSL_FILES)
     get_filename_component(LIBABSL_NAME "${LIBABSL_FILE}" NAME_WE)
     string(REPLACE "lib" "" LIBABSL_NAME "${LIBABSL_NAME}")
@@ -64,7 +64,7 @@ find_library(LIBARES ares PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 if(LIBARES)
   list(APPEND ALL_GRPC_LIBS "${LIBARES}")
 else()
-  # If grpc is built using cmake, the library name is libcares.a
+  # If grpc is built using cmake, the library name is libcares
   find_library(LIBCARES cares PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)
   list(APPEND ALL_GRPC_LIBS "${LIBCARES}")
 endif()
@@ -73,7 +73,7 @@ find_library(LIBBORINGSSL boringssl PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH)
 if(LIBBORINGSSL)
   list(APPEND ALL_GRPC_LIBS "${LIBBORINGSSL}")
 else()
-  # If grpc is built using cmake, the library name is libssl.a and libcrypto.a
+  # If grpc is built using cmake, the library name is libssl and libcrypto
   find_library(LIBSSL ssl PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)
   list(APPEND ALL_GRPC_LIBS "${LIBSSL}")
   find_library(LIBCRYPTO crypto PATHS  ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)

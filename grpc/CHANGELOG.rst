@@ -2,6 +2,13 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Support cmake to build grpc library (`#51 <https://github.com/CogRob/catkin_grpc/issues/51>`_)
+  * Support cmake to build grpc library
+  * Enable BUILD_SHARED_LIBS
+* Contributors: Yuki Furuta
+
 0.0.12 (2023-05-11)
 -------------------
 * Removed cronet dependencies (`#47 <https://github.com/CogRob/catkin_grpc/issues/47>`_)

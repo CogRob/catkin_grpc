@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>grpc</name>
-  <version>0.0.12</version>
+  <version>0.0.13</version>
   <description>Catkinized gRPC Package</description>
   <maintainer email="shengye@ucsd.edu">Shengye Wang</maintainer>
   <license>BSD</license>

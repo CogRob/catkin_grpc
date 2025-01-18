@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.13 (2025-01-17)
+-------------------
 * Support cmake to build grpc library (`#51 <https://github.com/CogRob/catkin_grpc/issues/51>`_)
   * Support cmake to build grpc library
   * Enable BUILD_SHARED_LIBS

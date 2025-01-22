@@ -58,6 +58,7 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
+      --exclude="*.cmake"
       ${GRPC_BUILD_INSTALL_DIR}/lib/
       ${GRPC_LIB_DESTINATION}/
   COMMAND

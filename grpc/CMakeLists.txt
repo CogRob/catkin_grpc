@@ -58,9 +58,15 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
-      --exclude="*.cmake"
+      --exclude="*.cmake" --exclude="libproto*"
       ${GRPC_BUILD_INSTALL_DIR}/lib/
       ${GRPC_LIB_DESTINATION}/
+  COMMAND
+    ${RSYNC}
+      --prune-empty-dirs --archive
+      --include="*/" --include="libproto*" --exclude="*"
+      ${GRPC_BUILD_INSTALL_DIR}/lib/
+      ${GRPC_LIB_DESTINATION}/protobuf
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive

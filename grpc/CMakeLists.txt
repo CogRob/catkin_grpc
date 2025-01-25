@@ -34,6 +34,7 @@ ExternalProject_Add(
   -DgRPC_INSTALL=ON
   -Dprotobuf_BUILD_LIBPROTOC=ON
   -Dprotobuf_BUILD_PROTOC_BINARIES=ON
+  -Dprotobuf_BUILD_SHARED_LIBS=OFF
   -Dprotobuf_BUILD_TESTS=OFF
   -Dprotobuf_WITH_ZLIB=ON
   BUILD_IN_SOURCE 1

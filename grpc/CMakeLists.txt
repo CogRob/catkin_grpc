@@ -34,6 +34,7 @@ ExternalProject_Add(
   -DgRPC_INSTALL=ON
   -Dprotobuf_BUILD_LIBPROTOC=ON
   -Dprotobuf_BUILD_PROTOC_BINARIES=ON
+  -Dprotobuf_BUILD_SHARED_LIBS=OFF
   -Dprotobuf_BUILD_TESTS=OFF
   -Dprotobuf_WITH_ZLIB=ON
   BUILD_IN_SOURCE 1
@@ -58,8 +59,15 @@ add_custom_command(
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
+      --exclude="*.cmake" --exclude="libproto*"
       ${GRPC_BUILD_INSTALL_DIR}/lib/
       ${GRPC_LIB_DESTINATION}/
+  COMMAND
+    ${RSYNC}
+      --prune-empty-dirs --archive
+      --include="*/" --include="libproto*" --exclude="*"
+      ${GRPC_BUILD_INSTALL_DIR}/lib/
+      ${GRPC_LIB_DESTINATION}/protobuf
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
@@ -99,12 +107,7 @@ add_custom_command(
 )
 
 install(
-  DIRECTORY
-    ${GRPC_INCLUDE_DESTINATION}/google
-    ${GRPC_INCLUDE_DESTINATION}/grpc
-    ${GRPC_INCLUDE_DESTINATION}/grpc++
-    ${GRPC_INCLUDE_DESTINATION}/grpcpp
-    ${GRPC_INCLUDE_DESTINATION}/src
+  DIRECTORY ${GRPC_INCLUDE_DESTINATION}/
   USE_SOURCE_PERMISSIONS
   DESTINATION
     ${CMAKE_INSTALL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/grpc)

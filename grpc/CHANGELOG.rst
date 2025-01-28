@@ -2,8 +2,8 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.15 (2025-01-28)
+-------------------
 * Bump grpc version to v1.48.4 (`#52 <https://github.com/CogRob/catkin_grpc/issues/52>`_)
 * Contributors: Yuki Furuta
 

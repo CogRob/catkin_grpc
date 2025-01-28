@@ -2,6 +2,11 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Bump grpc version to v1.48.4 (`#52 <https://github.com/CogRob/catkin_grpc/issues/52>`_)
+* Contributors: Yuki Furuta
+
 0.0.14 (2025-01-24)
 -------------------
 * Fix cmake installation step for changes with `#51 <https://github.com/CogRob/catkin_grpc/issues/51>`_ (`#53 <https://github.com/CogRob/catkin_grpc/issues/53>`_)

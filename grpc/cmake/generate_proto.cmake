@@ -41,7 +41,7 @@ find_library(
   ${GRPC_LIB_DIR}/protobuf
   NO_DEFAULT_PATH
   REQUIRED)
-find_library(LIBZ z PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)
+find_library(LIBZ z PATHS ${GRPC_LIB_DIR} REQUIRED)
 
 set(ALL_PROTOBUF_LIBS ${LIBPROTOBUF} ${LIBZ})
 message(STATUS "Found protobuf libraries at: ${ALL_PROTOBUF_LIBS}")
@@ -75,9 +75,9 @@ if(LIBBORINGSSL)
   list(APPEND ALL_GRPC_LIBS "${LIBBORINGSSL}")
 else()
   # If grpc is built using cmake, the library name is libssl and libcrypto
-  find_library(LIBSSL ssl PATHS ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)
+  find_library(LIBSSL ssl PATHS ${GRPC_LIB_DIR} REQUIRED)
   list(APPEND ALL_GRPC_LIBS "${LIBSSL}")
-  find_library(LIBCRYPTO crypto PATHS  ${GRPC_LIB_DIR} NO_DEFAULT_PATH REQUIRED)
+  find_library(LIBCRYPTO crypto PATHS  ${GRPC_LIB_DIR} REQUIRED)
   list(APPEND ALL_GRPC_LIBS "${LIBCRYPTO}")
 endif()
 

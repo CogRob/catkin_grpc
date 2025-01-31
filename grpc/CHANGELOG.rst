@@ -2,6 +2,11 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use system library for SSL and ZLIB (`#54 <https://github.com/CogRob/catkin_grpc/issues/54>`_)
+* Contributors: Yuki Furuta
+
 0.0.15 (2025-01-28)
 -------------------
 * Bump grpc version to v1.48.4 (`#52 <https://github.com/CogRob/catkin_grpc/issues/52>`_)

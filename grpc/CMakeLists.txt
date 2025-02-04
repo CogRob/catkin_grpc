@@ -21,7 +21,7 @@ ExternalProject_Add(
   PREFIX grpc
   GIT_REPOSITORY "https://github.com/grpc/grpc.git"
   GIT_TAG v1.48.4
-  GIT_CONFIG submodule.recurse=1 submodule.fetchJobs=10
+  GIT_CONFIG submodule.recurse=1 submodule.fetchJobs=3
   GIT_SHALLOW 1
   SOURCE_DIR grpc_build
   CMAKE_ARGS

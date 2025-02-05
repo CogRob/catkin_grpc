@@ -1,0 +1,4 @@
+[submodule "grpc/grpc"]
+	shallow = true
+	path = grpc/grpc
+	url = https://github.com/grpc/grpc.git

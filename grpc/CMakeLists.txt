@@ -88,13 +88,13 @@ add_custom_command(
     ${RSYNC}
       --prune-empty-dirs --archive
       --include="*/" --include="*.proto" --exclude="*"
-      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/src/proto/
+      ${GRPC_BUILD_SOURCE_DIR}/src/proto/
       ${GRPC_INCLUDE_DESTINATION}/src/proto/
   COMMAND
     ${RSYNC}
       --prune-empty-dirs --archive
       --include="*/" --include="*.h" --exclude="*"
-      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/gens/src/proto/
+      ${GRPC_BUILD_SOURCE_DIR}/gens/src/proto/
       ${GRPC_INCLUDE_DESTINATION}/src/proto/
   COMMAND
     ${RSYNC}
@@ -106,7 +106,7 @@ add_custom_command(
     ${RSYNC}
       --prune-empty-dirs --archive
       --include="*/" --include="*.h" --include="*.inc" --include="*.proto" --exclude="*"
-      ${CMAKE_CURRENT_BINARY_DIR}/grpc_build/third_party/protobuf/src/
+      ${GRPC_BUILD_SOURCE_DIR}/third_party/protobuf/src/
       ${GRPC_INCLUDE_DESTINATION}/
   COMMAND
     ${RSYNC}

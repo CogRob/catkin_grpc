@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package test_grpc.protos;
+import "google/protobuf/timestamp.proto";
+
+message Header {
+  int64 seq = 1;
+  google.protobuf.Timestamp stamp = 2;
+  string frame_id = 3;
+}

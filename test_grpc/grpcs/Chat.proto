@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package test_grpc.grpcs;
+import "test_grpc/protos/Header.proto";
+
+message Message {
+  test_grpc.protos.Header header = 1;
+  int32 sender = 2;
+  string body = 3;
+}
+
+service Chat {
+  rpc Echo (Message) returns (Message);
+}

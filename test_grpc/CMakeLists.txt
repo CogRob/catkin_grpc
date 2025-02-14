@@ -13,9 +13,23 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
-file(REAL_PATH "${grpc_DIR}/../../../lib" grpc_LIBRARY_DIR)
+function(realpath path var)
+  if(CMAKE_VERSION VERSION_LESS 3.19)
+    find_program(REALPATH realpath REQUIRED)
+    execute_process(
+      COMMAND "${REALPATH}" "${path}"
+      OUTPUT_VARIABLE realpath_output
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+  else()
+    file(REAL_PATH "${grpc_DIR}/../../../lib" realpath_output)
+  endif()
+  set("${var}" "${realpath_output}" PARENT_SCOPE)
+endfunction()
+
+realpath("${grpc_DIR}/../../../lib" grpc_LIBRARY_DIR)
 function(assert_grpc_library lib)
-  file(REAL_PATH "${lib}" LIBRARY)
+  realpath("${lib}" LIBRARY)
   string(FIND "${grpc_LIBRARY_DIR}" "${LIBRARY}" index)
   if(index LESS 0)
     message(DEBUG "${LIBRARY} is system library")

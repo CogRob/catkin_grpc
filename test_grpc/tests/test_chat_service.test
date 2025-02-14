@@ -1,0 +1,25 @@
+<launch>
+  <arg name="port" default="50000"/>
+
+  <node name="chat_server" pkg="test_grpc" type="chat_server"
+        output="screen">
+    <rosparam subst_value="true">
+      server_port: $(arg port)
+    </rosparam>
+  </node>
+
+  <node name="chat_client" pkg="test_grpc" type="chat_client"
+        output="screen">
+    <rosparam subst_value="true">
+      client_address: 'localhost:$(arg port)'
+    </rosparam>
+  </node>
+
+  <test test-name="test_chat_service" pkg="rostest" type="publishtest">
+    <rosparam>
+      topics:
+      - name: chat_client/response
+        timeout: 10
+    </rosparam>
+  </test>
+</launch>

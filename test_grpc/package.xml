@@ -8,5 +8,6 @@
   <author email="furushchev@gmail.com">Yuki Furuta</author>
   <buildtool_depend>catkin</buildtool_depend>
   <depend>grpc</depend>
+  <depend>roscpp</depend>
   <test_depend>rostest</test_depend>
 </package>

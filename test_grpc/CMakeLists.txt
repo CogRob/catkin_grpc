@@ -22,7 +22,7 @@ function(realpath path var)
       OUTPUT_STRIP_TRAILING_WHITESPACE
     )
   else()
-    file(REAL_PATH "${grpc_DIR}/../../../lib" realpath_output)
+    file(REAL_PATH "${path}" realpath_output)
   endif()
   set("${var}" "${realpath_output}" PARENT_SCOPE)
 endfunction()

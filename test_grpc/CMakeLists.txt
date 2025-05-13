@@ -46,12 +46,6 @@ if(LIB_PROTOC)
   assert_grpc_library(${LIB_PROTOC})
 endif()
 
-# Using libgrpc++_unsecure.so instead of libgrpc++.so because grpc initialization process can
-# hang up if libgrpc++.so is used.
-list(FILTER ALL_GRPC_LIBS EXCLUDE REGEX "^.*libgrpc\\+\\+\\.so$")
-# so as the libgrpc_unsecure.so and libgrpc.so
-list(FILTER ALL_GRPC_LIBS EXCLUDE REGEX "^.*libgrpc\\.so$")
-
 catkin_package(CATKIN_DEPENDS grpc)
 
 set(CMAKE_CXX_STANDARD 17)

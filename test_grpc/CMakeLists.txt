@@ -54,7 +54,9 @@ list(FILTER ALL_GRPC_LIBS EXCLUDE REGEX "^.*libgrpc\\.so$")
 
 catkin_package(CATKIN_DEPENDS grpc)
 
-set(CMAKE_CXX_STANDARD 17)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
 
 generate_proto(${PROJECT_NAME}
   GRPC

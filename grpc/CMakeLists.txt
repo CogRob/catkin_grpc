@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.8.2)
 include(ExternalProject)
 project(grpc)
 
-add_compile_options(-std=c++11)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
 
 find_package(catkin REQUIRED)
 

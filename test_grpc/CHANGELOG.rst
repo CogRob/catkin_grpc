@@ -2,8 +2,8 @@
 Changelog for package test_grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.17 (2025-05-14)
+-------------------
 * Allow users settings CXX standard (`#63 <https://github.com/CogRob/catkin_grpc/issues/63>`_)
 * Exclude unsecure library from exported libraries (`#62 <https://github.com/CogRob/catkin_grpc/issues/62>`_)
 * Fix bug in realpath (`#61 <https://github.com/CogRob/catkin_grpc/issues/61>`_)

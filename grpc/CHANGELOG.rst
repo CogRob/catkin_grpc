@@ -2,6 +2,20 @@
 Changelog for package grpc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Allow users settings CXX standard (`#63 <https://github.com/CogRob/catkin_grpc/issues/63>`_)
+* Exclude unsecure library from exported libraries (`#62 <https://github.com/CogRob/catkin_grpc/issues/62>`_)
+* Reduce cmake warning (`#60 <https://github.com/CogRob/catkin_grpc/issues/60>`_)
+  * Remove `-DBUILD_TESTING=OFF` because it generates a warning message
+  in cmake.
+* Use submodule instead of ExternalProject_Add (`#56 <https://github.com/CogRob/catkin_grpc/issues/56>`_)
+  * Use submodule instead of ExternalProject_Add
+* Mitigate access denial issue from github.com (`#55 <https://github.com/CogRob/catkin_grpc/issues/55>`_)
+  * Decrease the number of jobs to run git fetch to
+  clone submodules in parallel.
+* Contributors: Ryohei Ueda, Yuki Furuta
+
 0.0.16 (2025-01-31)
 -------------------
 * Use system library for SSL and ZLIB (`#54 <https://github.com/CogRob/catkin_grpc/issues/54>`_)

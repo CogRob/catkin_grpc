@@ -4,6 +4,18 @@ Changelog for package test_grpc
 
 Forthcoming
 -----------
+* Allow users settings CXX standard (`#63 <https://github.com/CogRob/catkin_grpc/issues/63>`_)
+* Exclude unsecure library from exported libraries (`#62 <https://github.com/CogRob/catkin_grpc/issues/62>`_)
+* Fix bug in realpath (`#61 <https://github.com/CogRob/catkin_grpc/issues/61>`_)
+* Depend on roscpp (`#59 <https://github.com/CogRob/catkin_grpc/issues/59>`_)
+* Set the right version for test_grpc
+* Add CHANGELOG.rst for test_grpc
+* Add package to test grpc (`#57 <https://github.com/CogRob/catkin_grpc/issues/57>`_)
+  * Add package to test grpc
+  * Enable Github Actions
+  * support realpath on cmake <3.19
+* Contributors: Ryohei Ueda, Yuki Furuta
+
 * Add package to test grpc (`#57 <https://github.com/CogRob/catkin_grpc/issues/57>`_)
   * Add package to test grpc
   * Enable Github Actions
